@@ -2,7 +2,8 @@
   @module 'Form', ->
     @init =->
       initDatepicker()
-      initAutocomplete('#transaction_category_name', gon.user_categories) if $('#transaction_category_name').length
+      initWysiwygEditor()
+      initAutocomplete('#transaction_category_name', gon.user_categories)
 
     initDatepicker = ->
       $('.datepicker').datepicker
@@ -10,6 +11,8 @@
         weekStart: 1
         clearBtn: true
         todayHighlight: true
+
+    initWysiwygEditor = ->
       $('.wysihtml5').each (i, elem) ->
         $(elem).wysihtml5()
 

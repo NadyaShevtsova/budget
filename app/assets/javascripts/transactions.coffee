@@ -3,7 +3,7 @@
     @init =->
       table = initDatatable()
       initDelete(table)
-      GoogleChart.init() if $('#piechart_3d').length
+      GoogleChart.init()
 
     initDatatable = ->
       $(".datatable table").DataTable({
@@ -33,4 +33,4 @@
 
 
 $ ->
-  Transactions.Index.init() if $('.transactions').length
+  Transactions.Index.init() if $('#transactions-index').length
