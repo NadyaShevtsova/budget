@@ -10,8 +10,6 @@
     %li{ class: "#{ 'active' if categories_active?}" }= link_to "Categories", categories_path
     %li{ class: "#{ 'active' if transactions_active?}" }= link_to "Transactions", transactions_path
   %ul.nav.navbar-nav.navbar-right
-    %li.transactions_search
-      = yield :transactions_search
     %li.dropdown
       = link_to "#", class: "dropdown-toggle user-dropdown", "aria-expanded": "false", "aria-haspopup": "true", "data-toggle":"dropdown", role: "button" do
         .row

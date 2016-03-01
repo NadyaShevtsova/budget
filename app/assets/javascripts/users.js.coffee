@@ -7,4 +7,4 @@
         return
 
 $ ->
-  Users.EditForm.init() if $('#edit_user_form').length
+  Users.EditForm.init() if $('#registrations-edit').length

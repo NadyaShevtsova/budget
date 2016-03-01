@@ -1,6 +1,6 @@
 %h2.col-sm-offset-2
   Edit #{resource_name.to_s.humanize}
-= form_for resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, method: :put, class: 'form-horizontal', id: 'edit_user_form' }  do |f|
+= form_for resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, method: :put, class: 'form-horizontal' }  do |f|
   = devise_error_messages!
   .form-group
     = image_tag f.object.photo.try(:file_url, :thumb)

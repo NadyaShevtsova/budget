@@ -1,27 +1,19 @@
-= content_for :transactions_search do
-  = render "search"
-
 .col-md-12
   %h1 Listing Transactions
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th= sort_link @q, :category_name, "Category"
-        %th= sort_link @q, :income, "Type"
-        %th= sort_link @q, :date, "Date"
-        %th= sort_link @q, :amount, "Amount"
-        %th= sort_link @q, :description, "Description"
-        %th{ colspan: '3'} Action
-    %tbody
-      = render partial: 'transaction', collection: @transactions
-    - if @transactions.blank?
-      %tr
-        %td.text-center{ colspan: 6 }= 'No transactions'
+  .datatable
+    %table.table.table-striped.table-bordered.table-hover{ :'data-source' => transactions_url(format: :json) }
+      %thead
+        %tr
+          %th= "Category"
+          %th= "Type"
+          %th= "Date"
+          %th= "Amount"
+          %th= "Description"
+          %th= "Action"
+      %tbody
   %br
     = link_to 'New Transaction', new_transaction_path
 
-.col-sm-offset-2
-  = paginate @transactions
 .col-md-12
   %h2= "Current balance: #{@current_balance}"
 .col-md-12

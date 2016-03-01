@@ -24,4 +24,15 @@ module ApplicationHelper
     raw links.collect { |l| link_to l.first, l.last }.join(" | ")
   end
 
+  def body_attributes
+    { class: body_class, id: body_id }
+  end
+
+  def body_class
+    [controller.controller_name.dasherize]
+  end
+
+  def body_id
+    "#{controller.controller_name.dasherize}-#{controller.action_name.dasherize}"
+  end
 end

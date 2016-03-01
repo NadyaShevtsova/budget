@@ -31,10 +31,9 @@ class CategoriesController < ApplicationController
 
   def destroy
     if @category.destroy
-      redirect_to categories_url, notice: "Category was successfully destroyed."
+      render json: { success: "Category was successfully destroyed." }, status: 200
     else
-      flash[:error] = @category.errors.full_messages.to_sentence
-      redirect_to categories_url
+      render json: { error: @category.errors.full_messages.to_sentence }, status: 422
     end
   end
 

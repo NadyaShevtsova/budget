@@ -13,6 +13,7 @@ gem 'validates_timeliness', '~> 4.0'
 
 # Assets
 gem 'haml'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'coffee-rails', '~> 4.1.0'
