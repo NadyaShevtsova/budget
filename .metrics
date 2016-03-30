@@ -1,0 +1,6 @@
+MetricFu::Configuration.run do |config|
+  config.configure_metric(:rails_best_practices) do |rbp|
+    rbp.silent = true
+    rbp.exclude = ["config/chef"]
+  end
+end

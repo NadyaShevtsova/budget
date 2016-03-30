@@ -36,8 +36,10 @@ gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'byebug'
+  gem 'metric_fu'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rails_best_practices'
   gem 'rspec-rails'
   gem 'vcr'
 end
@@ -47,6 +49,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'webmock'
 end
 
