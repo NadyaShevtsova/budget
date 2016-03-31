@@ -35,5 +35,14 @@ feature '#new/#create' do
     page.should have_content("Amount: is not a number")
     page.should have_content("Category_name: can't be blank")
     @user.transactions.count.should eq(0)
+  end
+
+  scenario 'User cannot create transactions more than on his pricing plan' do
+    @user.pricing_plan.quantity_of_transactions.times do |t|
+      create(:transaction, user_id: @user.id, category_name: @user.categories.first.name)
     end
+    visit transactions_path
+    page.should have_content("You cann't create more then #{@user.pricing_plan.quantity_of_transactions} transactions on #{@user.pricing_plan.name.capitalize} pricing plan. Please upgrade your Pricing plan")
+    page.should_not have_content("New Transaction")
+  end
 end

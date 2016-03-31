@@ -5,6 +5,16 @@ Rails.application.routes.draw do
   resources :categories do
     collection { post :sort }
   end
+  resources :pricing_plans, only: [:index] do
+    member do
+      get 'checkout'
+      post 'upgrade_with_stripe'
+      get 'paypal_express_checkout'
+      get 'upgrade_with_paypal'
+      get 'cancel_payment'
+      get 'downgrade'
+    end
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
   root 'home#index'

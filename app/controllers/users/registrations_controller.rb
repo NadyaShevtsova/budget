@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << [:first_name, :last_name, :time_zone, photo_attributes: [:file, :remote_file_url]]
+    devise_parameter_sanitizer.for(:account_update) << [:first_name, :last_name, :time_zone, :stripe_id, photo_attributes: [:file, :remote_file_url]]
   end
 
   def update_resource(resource, params)

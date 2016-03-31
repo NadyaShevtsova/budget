@@ -40,6 +40,13 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  #PAYPAL EXPRESS
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = Figaro.env.currency_code
+  end
+
   config.app_domain = 'localhost.test'
   config.app_port = '8080'
   config.action_mailer.default_url_options = { host: 'localhost:3000'}

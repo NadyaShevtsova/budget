@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
   layout 'modal', only: [:new, :edit]
+  load_and_authorize_resource
 
   def index
     @categories = current_user.categories.page(params[:page])

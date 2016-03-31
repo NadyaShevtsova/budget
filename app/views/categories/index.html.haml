@@ -1,3 +1,9 @@
+- if cannot? :create, Category
+  .center.alert.fade.in.alert-info
+    %button.close{"data-dismiss" => "alert"}×
+    You cann't create more then #{current_user.pricing_plan.quantity_of_categories} categories on #{current_user.pricing_plan.name.capitalize} pricing plan.
+    Please upgrade your #{ link_to "Pricing plan", pricing_plans_path }
+
 %h1 Categories
 .col-sm-offset-2
   = paginate @categories
@@ -7,9 +13,10 @@
     %li.ui-state-default.text-center
       = 'No categories'
 
-.col-md-12
-  %br
-    = link_to 'New Category', new_category_path, data: { :'remote-target' => '#categories-form .modal-content' }, class: 'open-category-js', title: "New"
+- if can? :create, Category
+  .col-md-12
+    %br
+      = link_to 'New Category', new_category_path, data: { :'remote-target' => '#categories-form .modal-content' }, class: 'open-category-js', title: "New"
 
 = content_for :overlay do
   = render "overlays/categories/form"

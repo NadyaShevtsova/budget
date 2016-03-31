@@ -39,6 +39,19 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  #PAYPAL EXPRESS
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: Figaro.env.paypal_username,
+      password: Figaro.env.paypal_password,
+      signature: Figaro.env.paypal_signature,
+      allow_guest_checkout: true
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = Figaro.env.currency_code
+  end
+
   config.app_domain = 'localhost.test'
 
   config.action_mailer.delivery_method = :sendmail

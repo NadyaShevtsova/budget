@@ -1,0 +1,70 @@
+.header
+  %h2 Pick your plan
+  %h4 Upgrade, downgrade, or cancel anytime.
+  %p.another-design in another design
+.row.pricing-wrapper
+  - @pricing_plans.each do |pricing_plan|
+    .col-md-3.col-lg-3.col-xs-6.col-sm-6.column
+      %div{ class: "pricing-table hover recommended #{ pricing_plan.name}" }
+        %h1.pricing-title=pricing_plan.name
+        .border.rotate
+          .table-price
+            = number_to_currency pricing_plan.price
+            %span= "/mo"
+        %ul.list-group
+          %li.list-group-item
+            - if pricing_plan.premium?
+              Unlimate
+            - else
+              #{pricing_plan.quantity_of_categories} categories
+          %li.list-group-item
+            - if pricing_plan.premium?
+              Unlimate
+            - else
+              #{pricing_plan.quantity_of_transactions} transactions
+        .table-buy
+          - unless pricing_plan.name.eql?(current_user.pricing_plan.name)
+            - if pricing_plan.price < current_user.pricing_plan.price
+              = link_to "Downgrade", downgrade_pricing_plan_path(pricing_plan), class: 'primary-action stretch_two'
+            - else
+              = link_to "Buy now", checkout_pricing_plan_path(pricing_plan), class: 'primary-action stretch_two'
+
+.row.pricing-wrapper2.hidden
+  - @pricing_plans.each do |pricing_plan|
+    .col-md-3.col-sm-6.col-xs-10.col-xs-offset-1.col-sm-offset-0
+      %div{ class: "pinpong-item another-#{ pricing_plan.name}" }
+        .pinpong-header
+          .figure
+            .sanimate{ "data-path-hover" => "m 0.2375,-1.325 0,118.2 c 46.5,-14.6 60.5,-21.4 97.5,-21.2 37,0.2 49.6,5.5 97.5,19.4 l 0,-118.2 -195,1.8 z" }
+              .height-figure
+              %svg{:preserveAspectRatio => "none", :viewBox => "0 0 178 610"}
+                %path{:d => "m 0,0 0,171.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"}/
+              .figcaption
+                %h2.whitetext.bold= pricing_plan.name.capitalize
+                .pinpong-body
+                  .pinpong-price
+                    .post
+                      .roboto.medium.top
+                        %span.dollersi $
+                        = pricing_plan.price
+                        %span Month
+                  .details
+                    %ul.blbord
+                      - if pricing_plan.premium?
+                        %li
+                          %strong Unlimate
+                        %li
+                          %strong Unlimate
+                      - else
+                        %li
+                          %strong= pricing_plan.quantity_of_categories
+                          Categories
+                        %li
+                          %strong= pricing_plan.quantity_of_transactions
+                          Transactions
+                .pinpong-footer
+                  - unless pricing_plan.name.eql?(current_user.pricing_plan.name)
+                    - if pricing_plan.price < current_user.pricing_plan.price
+                      = link_to "Downgrade", downgrade_pricing_plan_path(pricing_plan), class: 'btn svbutton bold'
+                    - else
+                      = link_to "Buy now", checkout_pricing_plan_path(pricing_plan), class: 'btn svbutton bold'

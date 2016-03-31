@@ -13,11 +13,12 @@ class Transaction < ActiveRecord::Base
 
   scope :income_amount,       ->{ where(income: true) }
   scope :expenditures_amount, ->{ where(income: false) }
+  scope :this_month,          ->{ where(date: Date.today.beginning_of_month..Date.today.end_of_month) }
 
   before_save :set_category
 
   def self.expenditures_this_month (ids)
-    self.joins(:category).where(id: ids, date: Date.today.beginning_of_month..Date.today, income: false)
+    self.joins(:category).where(id: ids, income: false).this_month
                     .group('categories.name')
                     .sum(:amount).to_a
                     .map{ |t| [t.first, t.last.to_f]}

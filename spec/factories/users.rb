@@ -5,6 +5,7 @@ FactoryGirl.define do
     email                 { Faker::Internet.email }
     password              { "password" }
     confirmed_at          { Time.now }
+    association :pricing_plan, factory: :mini_plan
   end
 
 end

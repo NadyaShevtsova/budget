@@ -2,8 +2,7 @@
   @module 'EditForm', ->
     @init =->
       $('.glyphicon-link, .glyphicon-folder-open').click ->
-        $(".form-group.hidden").removeClass 'hidden'
-        $(@).closest('.form-group').addClass 'hidden'
+        $(".toggle_photo").closest('.form-group').toggleClass 'hidden'
         return
 
 $ ->

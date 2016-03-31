@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306131530) do
+ActiveRecord::Schema.define(version: 20160315084917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20160306131530) do
 
   add_index "photos", ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id", using: :btree
 
+  create_table "pricing_plans", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "price",                    precision: 11, scale: 2
+    t.integer  "quantity_of_categories"
+    t.integer  "quantity_of_transactions"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer  "category_id"
     t.boolean  "income",                               default: false
@@ -79,10 +88,14 @@ ActiveRecord::Schema.define(version: 20160306131530) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "time_zone"
+    t.integer  "pricing_plan_id"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["pricing_plan_id"], name: "index_users_on_pricing_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "authorizations", "users"
+  add_foreign_key "users", "pricing_plans"
 end

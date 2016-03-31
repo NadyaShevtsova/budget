@@ -1,0 +1,249 @@
+#pricing-plans-index
+  background: #F2F2F2
+  .header
+    text-align: center
+  .pricing-wrapper
+    margin: 30px 0
+    color: #fff
+    font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana
+    font-size: 11px
+  .pricing-title
+    background: #fff
+    padding: 30px 0
+    margin: 0px
+    color: #595f6b
+    border-bottom: dashed 1px #d2d2d2
+    font-size: 2em
+    border-radius: 10px 10px 0 0
+    text-shadow: 0 1px 1px rgba(178,180,186,0.4)
+  .pricing-table
+    float: left
+    width: 100%
+    margin: 0 0px
+    padding: 0
+    border: solid 1px #4b4061
+    border-radius: 13px
+    background: #fff
+    text-align: center
+    -moz-box-shadow: 0 0 15px rgba(0,0,0,0.4)
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4)
+    box-shadow: 0 0 15px rgba(0,0,0,0.4)
+    -webkit-transition: all 0.25s ease
+    -o-transition: all 0.25s ease
+    transition: all 0.25s ease
+  .pricing-table.recommended .pricing-title, .pricing-table.recommended .primary-action
+    background: #3498DB
+    color: #fff
+  .border
+    border: dashed 1px #595f6b
+    width: 156px
+    height: 156px
+    border-radius: 50%
+    margin: 20px auto 0
+  .table-price
+    background: #595f6b
+    padding: 20px 0
+    font-size: 3.3em
+    text-shadow: 0 1px 1px rgba(178,180,186,0.4)
+    font-weight: 700
+    font-family: 'Roboto'
+    width: 150px
+    height: 150px
+    line-height: 110px
+    margin: 2px auto
+    border-radius: 50%
+    text-align: center
+    border: 1px solid #fff
+  .table-price span
+    font-size: 0.5em
+    line-height: 80px
+    font-weight: 400
+    vertical-align: bottom
+  .list-group
+    background: #fff
+    color: #999999
+    margin-top: 10px
+  .list-group li
+    padding: 8px 8px
+    font-size: 1.4em
+    font-weight: 700
+  .pricing-table .primary-action
+    display: inline-block
+    color: #595f6b
+    font-size: 1.4em
+    font-weight: 700
+    text-transform: uppercase
+    background: #fff
+    border: solid 1px #1f1f1f
+    padding: 10px 45px
+    -webkit-border-radius: 6px
+    -moz-border-radius: 6px
+    border-radius: 6px
+    -webkit-transition: all 0.25s ease
+    -moz-transition: all 0.25s ease
+    transition: all 0.25s ease
+    text-shadow: 0 1px 1px rgba(178,180,186,0.4)
+  .table-buy
+    overflow: hidden
+    background: #fff
+    padding: 15px
+    border-radius: 10px
+    margin-bottom: 30px
+  .pricing-table .primary-action:hover
+    background: #164B81
+    color: #fff
+    text-decoration: none
+  .hover:hover
+    -webkit-transform: scale(1.06)
+    -ms-transform: scale(1.06)
+    -moz-transform: scale(1.06)
+    -o-transform: scale(1.06)
+    transform: scale(1.06)
+  .stretch_two
+    animation-name: stretch_two
+    animation-duration: 1s
+    animation-timing-function: ease-out
+    animation-delay: 0
+    animation-direction: alternate
+    animation-iteration-count: infinite
+    animation-fill-mode: none
+    animation-play-state: running
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
++keyframes(stretch_two)
+  0%
+    transform: scale(0.9)
+  100%
+    transform: scale(1.0)
+
+.row.pricing-wrapper2
+  font-family: 'Droid Sans', sans-serif
+  font-size: 14px
+  line-height: 1.428571429
+  color: #999
+  overflow-y: scroll
+  .pinpong-item
+    padding: 0
+    margin: 20px 0
+  //
+  .boxy-item, .minimal-item, .pinpong-item, .xbox-item
+    min-height: 435px
+  //
+  .blueline-button, .dollersi, .pinpong-header, .roundy-item-best
+    position: relative
+  .pinpong-item .figure
+    position: relative
+    overflow: hidden
+    margin: 5px
+    background: #656565
+  .pinpong-item svg
+    position: absolute
+    top: -1px
+    z-index: 10
+    width: 100%
+    height: 100%
+    left: 0
+    path
+      fill: #3498DB
+  .pinpong-item .figcaption
+    position: absolute
+    top: 0
+    z-index: 11
+    padding: 0
+    width: 100%
+    height: 100%
+    text-align: center
+  .pinpong-header h2
+    text-align: center
+    -webkit-transform: translateY(50px)
+    transform: translateY(50px)
+    -webkit-backface-visibility: hidden
+    backface-visibility: hidden
+    -webkit-transition: -webkit-transform .3s
+    transition: -webkit-transform .3s
+    transition: transform .3s
+    transition: transform .3s, -webkit-transform .3s
+    -webkit-transition-timing-function: cubic-bezier(.25, .25, .115, 1)
+    -webkit-transition-timing-function: cubic-bezier(.25, .25, .115, 1.445)
+    timing-function: cubic-bezier(.25, .25, .115, 1.445)
+  //
+  .boxy-header .title h2, .minimal-header .title h2, .pinpong-header h2, .xbox-header h2
+    text-transform: uppercase
+  .bold
+    font-weight: 700
+  .whitetext
+    color: #fff
+  h2
+    font-size: 3.2rem
+  .pinpong-body
+    padding: 50px 0 15px
+  .pinpong-price
+    margin: -38px auto 0
+    font-size: 4.8rem
+    padding: 15px 0
+    overflow: hidden
+    -webkit-transition: background-color 1s
+    transition: background-color 1s
+    color: #3498DB
+  .roboto
+    font-family: Roboto, sans-serif
+  .pinpong-price span
+    font-size: 1.5rem
+    font-weight: 300
+  .dollersi
+    top: -20px
+  .pinpong-body .details
+    margin: 25px 0
+  .details
+    text-align: left
+  .details ul
+    padding: 0
+    width: 145px
+    margin: 0 auto
+  .blbord
+    border-top: 1px solid #999
+  //
+  .pinpong-body .details li, .pinpong-body .details li strong
+    color: #fff
+  .details ul li
+    list-style: none
+    padding: 10px 0
+    width: inherit
+  .blbord li
+    border-bottom: 1px solid #999
+  //
+  .pinpong-body .details li, .pinpong-body .details li strong
+    color: #fff
+  .details ul li strong
+    font-size: 1.4em
+    color: #666
+  .pinpong-footer
+    background: #fff
+    padding: 10px 0 16px
+    width: 100%
+    .btn
+      color: #3498DB
+    min-height: 66px
+  .svbutton
+    background: 0 0
+    border: transparent
+    font-size: 2rem
+  .sanimate:hover .figcaption h2
+    -webkit-transform: translateY(0)
+    transform: translateY(0)
+  .height-figure
+    height: 445px
+
+.another-design
+  color: #337ab7
+  cursor: pointer
+

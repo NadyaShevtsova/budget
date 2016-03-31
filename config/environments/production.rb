@@ -74,6 +74,19 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  #PAYPAL EXPRESS
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: Figaro.env.paypal_username,
+      password: Figaro.env.paypal_password,
+      signature: Figaro.env.paypal_signature,
+      allow_guest_checkout: true
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = Figaro.env.currency_code
+  end
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 

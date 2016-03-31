@@ -5,19 +5,19 @@
   .form-group
     = image_tag f.object.photo.try(:file_url, :thumb)
   = f.fields_for :photo, f.object.photo do |p|
-    .form-group
+    .form-group.toggle_photo
       = p.label :file, "Photo", class: 'col-sm-2 control-label'
       .col-sm-3
         = p.file_field :file, class: 'form-control'
       .col-sm-3
-        = link_to "#", title: "remote photo url", remote: true, class: 'toggle_photo' do
+        = link_to "#", title: "remote photo url", remote: true do
           %span.glyphicon.glyphicon.glyphicon-link
-    .form-group.hidden
+    .form-group.toggle_photo.hidden
       = p.label :remote_file_url, "Remote photo url", class: 'col-sm-2 control-label'
       .col-sm-3
         = p.text_field :remote_file_url, class: 'form-control'
       .col-sm-3
-        = link_to "#", title: "load photo from your device", remote: true, class: 'toggle_photo' do
+        = link_to "#", title: "load photo from your device", remote: true do
           %span.glyphicon.glyphicon-folder-open
   .form-group
     = f.label :first_name, class: 'col-sm-2 control-label'

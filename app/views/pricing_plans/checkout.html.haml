@@ -1,0 +1,47 @@
+.pricing-plan-container
+  .pricing-row
+    %h3
+      Pricing plan
+      %span.highlight #{@pricing_plan.name.capitalize}
+  .pricing-plan-price
+    %p
+      %span.highlight
+        %br
+        = "#{@pricing_plan.price} #{Figaro.env.currency_code}"
+        %br
+      per transaction
+  .pricing-row
+    %h3
+      - if @pricing_plan.premium?
+        Unlimate categories
+      - else
+        #{@pricing_plan.quantity_of_categories} categories
+  .pricing-row
+    %h3
+      - if @pricing_plan.premium?
+        Unlimate transactions
+      - else
+        #{@pricing_plan.quantity_of_transactions} transactions
+
+.payment-methods
+  %h5 Select payment method
+
+  = link_to paypal_express_checkout_pricing_plan_path(@pricing_plan) do
+    = image_tag "paypal.jpg"
+  = form_tag upgrade_with_stripe_pricing_plan_path, { method: :post, id: 'stripe_form' } do
+    %noscript
+      You must
+      = link_to "enable JavaScript", "http://www.enable-javascript.com", :target => "_blank"
+      in your web browser in order to pay via Stripe.
+    = hidden_field_tag :id, @pricing_plan.id
+    %button#stripe_button{ :'data-amount'      => (@pricing_plan.price*100).to_i,
+                           :'data-image'       => "/assets/coin-logo.jpg",
+                           :'color'            => 'black',
+                           :'data-currency'    => Figaro.env.currency_code,
+                           :'data-description' => "Payment for pricing plan ##{ @pricing_plan.name }",
+                           :'data-key'         => Figaro.env.stripe_publishable_key,
+                           :'data-email'       => current_user.email,
+                           :'data-name'        => 'Save Budget',
+                           :type               => "submit"}
+      = image_tag "stripe.png"
+    %script{:src => "https://checkout.stripe.com/v2/checkout.js"}

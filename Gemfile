@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '2.3.0'
+gem 'activemerchant'
 gem 'airbrake', '~> 5.0'
+gem 'cancancan', '~> 1.10'
 gem 'carrierwave'
 gem "figaro"
 gem 'kaminari'
@@ -9,6 +11,8 @@ gem 'mini_magick'
 gem 'pg'
 gem 'rails', '~> 4.2.5'
 gem 'ransack'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe-ruby-mock', '~> 2.2.2', :require => 'stripe_mock', :git => "https://github.com/rebelidealist/stripe-ruby-mock"
 gem 'validates_timeliness', '~> 4.0'
 
 # Assets
